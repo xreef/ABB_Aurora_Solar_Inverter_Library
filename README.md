@@ -306,7 +306,7 @@ As you can see the usage is quite simple.
 
 Here the video of the result call.
 
-https://youtu.be/KK6nUxzuNPs
+[![Watch the video](https://img.youtube.com/vi/khTdjJFrQss/maxresdefault.jpg)](https://www.youtube.com/watch?v=khTdjJFrQss)
 
 Thanks
 ------
