@@ -1,3 +1,20 @@
+<div>
+<a href="https://www.mischianti.org/forums/forum/mischiantis-libraries/library-for-abb-ex-powerone-aurora-inverter-for-arduino-esp32-and-esp8266/"><img
+  src="https://github.com/xreef/LoRa_E32_Series_Library/raw/master/resources/buttonSupportForumEnglish.png" alt="Support forum Aurora Inverter English"
+   align="right"></a>
+</div>
+<div>
+<a href="https://www.mischianti.org/it/forums/forum/le-librerie-di-mischianti/libreria-per-linverter-abb-ex-powerone-aurora-arduino-esp32-e-esp8266/"><img
+  src="https://github.com/xreef/LoRa_E32_Series_Library/raw/master/resources/buttonSupportForumItaliano.png" alt="Forum supporto Aurora Inverter italiano"
+  align="right"></a>
+</div>
+
+
+
+#
+#
+
+
 ABB Aurora protocol
 -------------------
 
@@ -14,31 +31,28 @@ The communication between Host and processor works via a Serial Interface RS485 
 -   1 stop bit
 -   no parity
 
-The communication protocol uses fixed length transmission messages (8Bytes + 2Bytes for Checksum) structured as follows:
-
-||
-|0|1|2|3|4|5|6|7|8|9|
-|Address|Command|B2|B3|B4|B5|B6|B7|CRC\_L|CRC\_H|
 
 The structure of the answer has also fixed length (6 Bytes + 2 Bytes for Checksum) :
-
-||
-|0|1|2|3|4|5|6|7|
-|Transmission State|Global State|B2|B3|B4|B5|CRC\_L|CRC\_H|
 
 **Transmission State** is coded as follows:
 
 0 = Everything is OK.
-51 = Command is not implemented
-52 = Variable does not exist
-53 = Variable value is out of range
-54 = EEprom not accessible
-55 = Not Toggled Service Mode
-56 = Can not send the command to internal micro
-57 = Command not Executed
-58 = The variable is not available, retry
 
-[![](https://www.mischianti.org/wp-content/uploads/2020/05/pcbWay-banner-mobile-300x200-1.gif)](https://www.pcbway.com/?from=mischianti05)
+51 = Command is not implemented
+
+52 = Variable does not exist
+
+53 = Variable value is out of range
+
+54 = EEprom not accessible
+
+55 = Not Toggled Service Mode
+
+56 = Can not send the command to internal micro
+
+57 = Command not Executed
+
+58 = The variable is not available, retry
 
 **Global State** shows the state of the addressed device, the details are specified in the description of the commands.
 
@@ -82,32 +96,11 @@ MAX3485 and esp8266 connection schema
 
 As you can see It’s quite simple to connect.
 
-Library
--------
-
-You can find my library here.
-
-**To download.**
-
--   Click the DOWNLOADS button in the top right corner, rename the uncompressed folder Arduino\_ABB\_PowerOne\_Aurora\_communication\_protocol.
--   Check that the Arduino\_ABB\_PowerOne\_Aurora\_communication\_protocol folder contains Aurora.cpp and Aurora.h.
--   Place the Arduino\_ABB\_PowerOne\_Aurora\_communication\_protocol library folder your /libraries/ folder.
--   You may need to create the libraries subfolder if its your first library.
--   Restart the IDE.
-
-List of commands It’s quite big, so I’m going to explain all.
-
 ### Constructor
 
 As usual I try to create It more generic as possible, so If you want use `HardwareSerial `or `SoftwareSerial `you are free to choiche.
 
-As you can see in the packet description
-
-||
-|0|1|2|3|4|5|6|7|8|9|
-|**Address**|Command|B2|B3|B4|B5|B6|B7|CRC\_L|CRC\_H|
-
-you must specify an address, that address normally is 2, but you must check It in your inverter menu.
+You must specify an address, that address normally is 2, but you must check It in your inverter menu.
 
 You can create a **chain of inverters** that communicate via RS485. An address can be chosen from 2 to 63. The address on the inverter is set through the display and the pushbutton panel.
 
@@ -123,8 +116,6 @@ This menu allows you to set the serial port addresses of the individual inverter
 <col width="50%" />
 <tbody>
 <tr class="odd">
-<td align="left">1
-2</td>
 <td align="left"><code class="cpp comments">// Aurora(byte inverterAddress, HardwareSerial* serial, byte serialCommunicationControlPin)</code>
 <code class="cpp plain">Aurora inverter = Aurora(2, &amp;amp;Serial, 5);</code></td>
 </tr>
@@ -142,8 +133,6 @@ This menu allows you to set the serial port addresses of the individual inverter
 <col width="50%" />
 <tbody>
 <tr class="odd">
-<td align="left">1
-2</td>
 <td align="left"><code class="cpp comments">// Aurora(byte inverterAddress, byte rxPin, byte txPin, byte serialCommunicationControlPin)</code>
 <code class="cpp plain">Aurora inverter = Aurora(2, 10, 11, 5);</code></td>
 </tr>
@@ -157,18 +146,47 @@ This menu allows you to set the serial port addresses of the individual inverter
 
 For software serial you can pass external SoftwareSerial instance.
 
-||
-|1|`// Aurora(byte inverterAddress, SoftwareSerial* serial, byte serialCommunicationControlPin) `|
+`// Aurora(byte inverterAddress, SoftwareSerial* serial, byte serialCommunicationControlPin) `|
 
 #### Usage
 
 First you must startup the communication with `begin` command:
 
-||
-|1|`inverter.begin();`|
+`inverter.begin();`|
 
 Than there are a lot of command that you can use to make query to your Inverter:
 
+```cpp
+        void begin();
+
+        void clearReceiveData();
+        DataState readState();
+        DataVersion readVersion();
+        DataDSP readDSP(byte type, byte global = (byte)1);
+        DataTimeDate readTimeDate();
+        bool writeTimeDate(unsigned long epochTime);
+        DataLastFourAlarms readLastFourAlarms();
+        DataJunctionBoxState readJunctionBoxState(byte nj);
+        bool readJunctionBoxVal(byte nj, byte par);
+        DataSystemPN readSystemPN();
+        DataSystemSerialNumber readSystemSerialNumber();
+        DataManufacturingWeekYear readManufacturingWeekYear();
+        DataFirmwareRelease readFirmwareRelease();
+        DataCumulatedEnergy readCumulatedEnergy(byte par);
+        bool writeBaudRateSetting(byte baudcode);
+        DataConfigStatus readConfig();
+        DataTimeCounter readTimeCounter(byte param);
+
+        // Central
+        bool readFlagsSwitchCentral();
+        bool readCumulatedEnergyCentral(byte var, byte ndays_h, byte ndays_l, byte global);
+        bool readFirmwareReleaseCentral(byte var);
+        bool readBaudRateSettingCentral(byte baudcode, byte serialline);
+        bool readSystemInfoCentral(byte var);
+        bool readJunctionBoxMonitoringCentral(byte cf, byte rn, byte njt, byte jal, byte jah);
+        bool readSystemPNCentral();
+        bool readSystemSerialNumberCentral();
+```
 
 Example code
 ------------
