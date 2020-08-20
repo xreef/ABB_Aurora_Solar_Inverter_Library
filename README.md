@@ -17,6 +17,10 @@
 
 ABB Aurora protocol
 -------------------
+### You can refer the complete documentation on my site
+[ABB Aurora PV inverter library for Arduino, esp8266 and esp32](https://www.mischianti.org/2020/08/20/abb-aurora-pv-inverter-library-for-arduino-esp8266-and-esp32/)
+
+
 
 Here the base information of RS485 ABB Aurora communication Protocol.
 
@@ -149,6 +153,9 @@ For software serial you can pass external SoftwareSerial instance.
 `// Aurora(byte inverterAddress, SoftwareSerial* serial, byte serialCommunicationControlPin) `|
 
 #### Usage
+
+You can refer the complete documentation on my site
+[ABB Aurora PV inverter library for Arduino, esp8266 and esp32](https://www.mischianti.org/2020/08/20/abb-aurora-pv-inverter-library-for-arduino-esp8266-and-esp32/)
 
 First you must startup the communication with `begin` command:
 
