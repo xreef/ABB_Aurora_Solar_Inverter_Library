@@ -2,7 +2,7 @@
 #define Aurora_h
 #include <Arduino.h>
 
-//#define ADD_SOFTWARE_SERIAL
+#define ADD_SOFTWARE_SERIAL
 
 #ifdef ADD_SOFTWARE_SERIAL
 #include <SoftwareSerial.h>
