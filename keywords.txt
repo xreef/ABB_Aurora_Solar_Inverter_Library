@@ -1,0 +1,40 @@
+###########################################
+# Syntax Coloring Map For PCF8574-library
+###########################################
+
+###########################################
+# Datatypes (KEYWORD1)
+###########################################
+
+Aurora	KEYWORD1
+
+###########################################
+# Methods and Functions (KEYWORD2)
+###########################################
+
+begin	KEYWORD2
+clearReceiveData	KEYWORD2
+readState	KEYWORD2
+readVersion	KEYWORD2
+readDSP	KEYWORD2
+readTimeDate	KEYWORD2
+writeTimeDate	KEYWORD2
+readLastFourAlarms	KEYWORD2
+readJunctionBoxState	KEYWORD2
+readJunctionBoxVal	KEYWORD2
+readSystemPN	KEYWORD2
+readSystemSerialNumber	KEYWORD2
+readManufacturingWeekYear	KEYWORD2
+readFirmwareRelease	KEYWORD2
+readCumulatedEnergy	KEYWORD2
+writeBaudRateSetting	KEYWORD2
+readConfig	KEYWORD2
+readTimeCounter	KEYWORD2
+readFlagsSwitchCentral	KEYWORD2
+readCumulatedEnergyCentral	KEYWORD2
+readFirmwareReleaseCentral	KEYWORD2
+readBaudRateSettingCentral	KEYWORD2
+readSystemInfoCentral	KEYWORD2
+readJunctionBoxMonitoringCentral	KEYWORD2
+readSystemPNCentral	KEYWORD2
+readSystemSerialNumberCentral	KEYWORD2
