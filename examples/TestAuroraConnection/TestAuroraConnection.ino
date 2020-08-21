@@ -31,7 +31,7 @@ void setup()
 // The loop function is called in an endless loop
 void loop()
 {
-	Aurora::DataCumulatedEnergy cumulatedEnergy = inverter.readCumulatedEnergy(1);
+	Aurora::DataCumulatedEnergy cumulatedEnergy = inverter.readCumulatedEnergy(CUMULATED_MONTHLY_ENERGY);
     Serial.println(F("------------------------------------------"));
     Serial.println(F("INVERTER 2"));
     Serial.print(F("          Data ROW = ")); SerialPrintData(inverter.receiveData);
