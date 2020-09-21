@@ -2,7 +2,7 @@
  Test Arduino MAX485 Aurora ABB connection
  by Mischianti Renzo <http://www.mischianti.org>
 
- https://www.mischianti.org/
+ https://www.mischianti.org/2020/08/20/abb-aurora-pv-inverter-library-for-arduino-esp8266-and-esp32/
 */
 
 #include "Arduino.h"
