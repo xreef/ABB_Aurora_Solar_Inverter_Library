@@ -101,6 +101,9 @@ class Aurora {
 
         void begin();
 
+        void setInverterAddress(byte);
+        byte getInverterAddress();
+
         void clearReceiveData();
 
         typedef struct {
