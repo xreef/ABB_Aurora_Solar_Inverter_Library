@@ -75,6 +75,14 @@ void Aurora::begin(){
 #endif
 }
 
+void Aurora::setInverterAddress(byte inverterAddress) {
+    this->inverterAddress = inverterAddress;
+}
+
+byte Aurora::getInverterAddress() {
+    return this->inverterAddress;
+}
+
 void Aurora::clearData(byte *data, byte len) {
     for (int i = 0; i < len; i++) {
         data[i] = 0;
